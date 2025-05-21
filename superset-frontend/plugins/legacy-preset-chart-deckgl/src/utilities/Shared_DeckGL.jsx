@@ -32,12 +32,14 @@ import { columnChoices, PRIMARY_COLOR } from './controls';
 let deckglTiles;
 
 export const DEFAULT_DECKGL_TILES = [
-  ['mapbox://styles/mapbox/streets-v9', 'Streets'],
-  ['mapbox://styles/mapbox/dark-v9', 'Dark'],
-  ['mapbox://styles/mapbox/light-v9', 'Light'],
-  ['mapbox://styles/mapbox/satellite-streets-v9', 'Satellite Streets'],
-  ['mapbox://styles/mapbox/satellite-v9', 'Satellite'],
-  ['mapbox://styles/mapbox/outdoors-v9', 'Outdoors'],
+  ['https://tile.openstreetmap.org/{z}/{x}/{y}.png', 'Streets (OSM)'],
+  ['https://tile.osm.ch/osm-swiss-style/{z}/{x}/{y}.png', 'Topography (OSM)'],
+  ['mapbox://styles/mapbox/streets-v9', 'Streets (Mapbox)'],
+  ['mapbox://styles/mapbox/dark-v9', 'Dark (Mapbox)'],
+  ['mapbox://styles/mapbox/light-v9', 'Light (Mapbox)'],
+  ['mapbox://styles/mapbox/satellite-streets-v9', 'Satellite Streets (Mapbox)'],
+  ['mapbox://styles/mapbox/satellite-v9', 'Satellite (Mapbox)'],
+  ['mapbox://styles/mapbox/outdoors-v9', 'Outdoors (Mapbox)'],
 ];
 
 const getDeckGLTiles = () => {

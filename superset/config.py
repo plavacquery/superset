@@ -421,6 +421,8 @@ D3_FORMAT: D3Format = {}
 # Override the default mapbox tiles
 # Default values are equivalent to
 # DECKGL_BASE_MAP = [
+#   ['https://tile.openstreetmap.org/{z}/{x}/{y}.png', 'Streets (OSM)'],
+#   ['https://tile.osm.ch/osm-swiss-style/{z}/{x}/{y}.png', 'Topography (OSM)'],
 #   ['mapbox://styles/mapbox/streets-v9', 'Streets'],
 #   ['mapbox://styles/mapbox/dark-v9', 'Dark'],
 #   ['mapbox://styles/mapbox/light-v9', 'Light'],
@@ -842,9 +844,14 @@ STORE_CACHE_KEYS_IN_METADATA_DB = False
 
 # CORS Options
 # NOTE: enabling this requires installing the cors-related python dependencies
-# `pip install .[cors]` or `pip install apache-superset[cors]`, depending
-ENABLE_CORS = False
-CORS_OPTIONS: dict[Any, Any] = {}
+# `pip install .[cors]` or `pip install apache_superset[cors]`, depending
+ENABLE_CORS = True
+CORS_OPTIONS: dict[Any, Any] = {
+    "origins": [
+        "https://tile.openstreetmap.org",
+        "https://tile.osm.ch",
+    ]
+}
 
 # Sanitizes the HTML content used in markdowns to allow its rendering in a safe manner.
 # Disabling this option is not recommended for security reasons. If you wish to allow
@@ -1671,6 +1678,8 @@ TALISMAN_CONFIG = {
             "'self'",
             "https://api.mapbox.com",
             "https://events.mapbox.com",
+            "https://tile.openstreetmap.org",
+            "https://tile.osm.ch",
         ],
         "object-src": "'none'",
         "style-src": [
@@ -1702,6 +1711,8 @@ TALISMAN_DEV_CONFIG = {
             "'self'",
             "https://api.mapbox.com",
             "https://events.mapbox.com",
+            "https://tile.openstreetmap.org",
+            "https://tile.osm.ch",
         ],
         "object-src": "'none'",
         "style-src": [

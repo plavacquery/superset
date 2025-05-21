@@ -29,7 +29,9 @@ export default function validateMapboxStylesUrl(v: unknown) {
     typeof v === 'string' &&
     v.trim().length > 0 &&
     (v.trim().startsWith('mapbox://styles/') ||
-      v.trim().startsWith('tile://http'))
+      v.trim().startsWith('tile://http') ||
+      v.trim().includes('osm') ||
+      v.trim().includes('openstreetmap'))
   ) {
     return false;
   }
