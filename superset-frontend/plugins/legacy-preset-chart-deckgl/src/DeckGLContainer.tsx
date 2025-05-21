@@ -39,6 +39,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import { Viewport } from './utils/fitViewport';
 import {
   MAPBOX_LAYER_PREFIX,
+  OSM_LAYER_KEYWORDS,
   TILE_LAYER_PREFIX,
   buildTileLayer,
 } from './utils';
@@ -98,7 +99,8 @@ export const DeckGLContainer = memo(
 
     const layers = useCallback(() => {
       if (
-        props.mapStyle?.startsWith(TILE_LAYER_PREFIX) &&
+        (props.mapStyle?.startsWith(TILE_LAYER_PREFIX) ||
+          OSM_LAYER_KEYWORDS.some(tilek => props.mapStyle?.includes(tilek))) &&
         props.layers.some(
           l => typeof l !== 'function' && l?.id === 'tile-layer',
         ) === false
